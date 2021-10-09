@@ -12,9 +12,12 @@ const formSettings = {
 //============================= Popup =======================
 const popup = document.querySelector('.popup');
 const popupTitle = document.querySelector('.popup__title');
+const popupSubtitle = document.querySelector('.popup__subtitle');
 const popupSubmit = document.querySelector('.popup__submit');
 const popupClose = document.querySelector('.popup__close');
 const cardsButtonAll = document.querySelectorAll('.cards__button');
+const submittedInputAll = document.querySelectorAll('.popup__input');
+const popupWrapper = document.querySelector('.popup__wrapper');
 const form = document.querySelector(formSettings.formSelector);
 const formValidator = new FormValidator(formSettings, form);
 const name = document.querySelector('.popup__input_type_name');
@@ -37,18 +40,27 @@ function resetInputs() {
 cardsButtonAll.forEach(element => {
   element.addEventListener('click', (event) => { //open form
     popupTitle.textContent = event.target.textContent;
-
     resetInputs();
     formValidator.resetValidation();
     popup.classList.add('popup_is_opened');
   });
 });
- 
+
 popupSubmit.addEventListener('click', ()=> {  //submit request
-  popup.classList.remove('popup_is_opened');
+  submittedInputAll.forEach ((element) => {
+    element.remove();
+  })
+  popupSubtitle.textContent = "Your request has been received by the service and will be reviewed within seven calendar days. A message about the decision on your request will be sent to your email.   You will also receive supporting certificates that have the legal force of an ordinary paper document. Take care of yourself.";
+  popupSubmit.remove();
+  uploadFile.remove();
+  popupClose.textContent = "Return to home page";
+  popupWrapper.style.display = "flex";
+  popupWrapper.style.flexDirection = "column";
+  popupWrapper.style.gap = "50px";
 });
 
-popupClose.addEventListener('click', ()=> { //close form 
+popupClose.addEventListener('click', ()=> { //close form
+  location.reload();
   popup.classList.remove('popup_is_opened');
 })
 
