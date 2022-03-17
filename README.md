@@ -8,4 +8,3 @@ The Code Jam unites Web Development students from Practicum 100 programs in the 
 
 [Github Page](https://phoenix801.github.io/October_Code_Jam_2021/)
 
-Practicum 100 page: https://www.practicum100.org/
